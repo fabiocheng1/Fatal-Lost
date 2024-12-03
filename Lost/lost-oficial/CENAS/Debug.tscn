@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnudyhhpt1jbm"]
+
+[ext_resource type="Script" path="res://CENAS/debug.gd" id="1_fheiu"]
+[ext_resource type="PackedScene" uid="uid://dtn7cfen8c2qr" path="res://PREFABS/PLAYER.tscn" id="1_htr0i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pat4p"]
+size = Vector2(1325, 20)
+
+[node name="Debug" type="Node2D"]
+script = ExtResource("1_fheiu")
+
+[node name="PLAYER" parent="." instance=ExtResource("1_htr0i")]
+position = Vector2(32, 568)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D"]
+offset_left = -32.0
+offset_top = 600.0
+offset_right = 1272.0
+offset_bottom = 640.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(649.5, 616)
+shape = SubResource("RectangleShape2D_pat4p")
+
+[node name="inimigo" type="ColorRect" parent="."]
+offset_left = 728.0
+offset_top = 528.0
+offset_right = 768.0
+offset_bottom = 568.0

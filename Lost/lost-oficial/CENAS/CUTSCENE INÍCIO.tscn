@@ -1,0 +1,136 @@
+[gd_scene load_steps=18 format=3 uid="uid://dmwqvpvsa66"]
+
+[ext_resource type="Texture2D" uid="uid://bwcaqlus5w4av" path="res://SPRITES/dark florest.png" id="1_8c013"]
+[ext_resource type="Script" path="res://SCRIPTS/cenario.gd" id="1_bl5um"]
+[ext_resource type="Script" path="res://SCRIPTS/cutscene_início.gd" id="1_lmy1c"]
+[ext_resource type="Texture2D" uid="uid://1v5bl1ifp01p" path="res://SPRITES/tileset player.png" id="3_yby8s"]
+[ext_resource type="Texture2D" uid="uid://ckdhtmawjp5ot" path="res://SPRITES/images-removebg-preview.png" id="5_dhkda"]
+[ext_resource type="Script" path="res://SCRIPTS/tarja_cima.gd" id="6_e67nh"]
+[ext_resource type="Texture2D" uid="uid://d2lhc2ncpa5lc" path="res://SPRITES/Sem título.jpg" id="7_v0pn3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qrmex"]
+size = Vector2(93, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s35ag"]
+atlas = ExtResource("3_yby8s")
+region = Rect2(80, 0, 40, 81)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r45a8"]
+atlas = ExtResource("3_yby8s")
+region = Rect2(120, 0, 40, 81)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qclro"]
+atlas = ExtResource("3_yby8s")
+region = Rect2(160, 0, 40, 81)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lbku1"]
+atlas = ExtResource("3_yby8s")
+region = Rect2(200, 0, 40, 81)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0sit"]
+atlas = ExtResource("3_yby8s")
+region = Rect2(0, 0, 40, 81)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e7ye0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s35ag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r45a8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qclro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lbku1")
+}],
+"loop": true,
+"name": &"andando",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0sit")
+}],
+"loop": true,
+"name": &"parado",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_atfb6"]
+size = Vector2(46, 114)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l8uxt"]
+size = Vector2(1162, 112)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ytw8"]
+size = Vector2(96, 33)
+
+[node name="CutsceneInício" type="Node2D"]
+script = ExtResource("1_lmy1c")
+
+[node name="cenario" type="CharacterBody2D" parent="."]
+script = ExtResource("1_bl5um")
+
+[node name="DarkFlorest3" type="Sprite2D" parent="cenario"]
+position = Vector2(1536, 296)
+scale = Vector2(4.4, 1.78788)
+texture = ExtResource("1_8c013")
+
+[node name="Images-removebg-preview" type="Sprite2D" parent="cenario"]
+position = Vector2(1584, 336)
+scale = Vector2(5.26489, 5.05696)
+texture = ExtResource("5_dhkda")
+
+[node name="skip cena" type="CollisionShape2D" parent="cenario"]
+position = Vector2(1248, 544)
+shape = SubResource("RectangleShape2D_qrmex")
+
+[node name="PLAYER" type="CharacterBody2D" parent="."]
+position = Vector2(4, 32)
+
+[node name="IMAGEM_PLAYER" type="AnimatedSprite2D" parent="PLAYER"]
+position = Vector2(69, 565)
+sprite_frames = SubResource("SpriteFrames_e7ye0")
+animation = &"andando"
+autoplay = "parado"
+
+[node name="COLISÃO PLAYER" type="CollisionShape2D" parent="PLAYER"]
+position = Vector2(68, 559)
+shape = SubResource("RectangleShape2D_atfb6")
+
+[node name="TARJA CIMA" type="CharacterBody2D" parent="."]
+position = Vector2(0, -80)
+script = ExtResource("6_e67nh")
+
+[node name="TARJA1" type="ColorRect" parent="TARJA CIMA"]
+offset_left = -8.0
+offset_top = -40.0
+offset_right = 1200.0
+offset_bottom = 64.0
+color = Color(0, 0, 0, 1)
+
+[node name="COLISÃO TARJA" type="CollisionShape2D" parent="TARJA CIMA"]
+position = Vector2(571, 8)
+shape = SubResource("RectangleShape2D_l8uxt")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(40, 112)
+shape = SubResource("RectangleShape2D_8ytw8")
+
+[node name="CAIXA DE DIÁLOGO" type="RichTextLabel" parent="."]
+offset_left = 161.0
+offset_top = 40.0
+offset_right = 1249.0
+offset_bottom = 112.0
+
+[node name="IMAGEM DIÁLOGO" type="StaticBody2D" parent="."]
+
+[node name="SemTítulo" type="Sprite2D" parent="IMAGEM DIÁLOGO"]
+position = Vector2(56, 48)
+scale = Vector2(0.428889, 0.393333)
+texture = ExtResource("7_v0pn3")

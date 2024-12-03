@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://csb4j2xelht03"]
+
+[ext_resource type="Script" path="res://SCRIPTS/BOTAO_START.gd" id="1_5rjjf"]
+[ext_resource type="Texture2D" uid="uid://bwcaqlus5w4av" path="res://SPRITES/dark florest.png" id="1_75hbo"]
+[ext_resource type="Script" path="res://SCRIPTS/BOTÃO_OPÇÕES.gd" id="2_mool1"]
+
+[node name="TITLE SCENE" type="Node2D"]
+
+[node name="DarkFlorest" type="Sprite2D" parent="."]
+position = Vector2(577, 322.5)
+scale = Vector2(1.64286, 1.60345)
+texture = ExtResource("1_75hbo")
+
+[node name="BOTAO START" type="Button" parent="."]
+offset_left = 496.0
+offset_top = 72.0
+offset_right = 632.0
+offset_bottom = 160.0
+text = "START"
+script = ExtResource("1_5rjjf")
+
+[node name="BOTAO OPÇÕES" type="Button" parent="."]
+offset_left = 496.0
+offset_top = 184.0
+offset_right = 632.0
+offset_bottom = 216.0
+text = "OPÇÕES"
+script = ExtResource("2_mool1")

@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://c78qw1h4jy508"]
+
+[ext_resource type="Texture2D" uid="uid://dllr5vbk6kewo" path="res://SPRITES/fundo da sala.jpg" id="1_ylmur"]
+[ext_resource type="PackedScene" uid="uid://dtn7cfen8c2qr" path="res://PREFABS/PLAYER.tscn" id="2_bl3mr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ndh0u"]
+size = Vector2(1245, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o1si8"]
+size = Vector2(6, 642)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3p584"]
+size = Vector2(26, 657)
+
+[node name="SALA" type="Node2D"]
+
+[node name="FundoDaSala" type="Sprite2D" parent="."]
+position = Vector2(587.25, 432)
+scale = Vector2(2.22818, 2.85348)
+texture = ExtResource("1_ylmur")
+
+[node name="CHÃO" type="StaticBody2D" parent="."]
+
+[node name="COLISÃO CHÃO" type="CollisionShape2D" parent="CHÃO"]
+position = Vector2(609.5, 624)
+shape = SubResource("RectangleShape2D_ndh0u")
+
+[node name="PLAYER" parent="." instance=ExtResource("2_bl3mr")]
+position = Vector2(16, 568)
+
+[node name="parede1" type="StaticBody2D" parent="."]
+
+[node name="colisaoparede1" type="CollisionShape2D" parent="parede1"]
+position = Vector2(-6, 312)
+shape = SubResource("RectangleShape2D_o1si8")
+
+[node name="parede2" type="StaticBody2D" parent="."]
+
+[node name="colisaoparede2" type="CollisionShape2D" parent="parede2"]
+position = Vector2(1168, 304)
+shape = SubResource("RectangleShape2D_3p584")
